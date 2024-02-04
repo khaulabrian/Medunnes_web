@@ -30,20 +30,18 @@ use App\Http\Controllers\backend\UsermanagementController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+        return view('welcome');
 });
+
+
 
 Route::get('/daftarpoli', [PasienviewController::class, 'daftarpoli'])->name('daftarpoli');
 Route::get('/daftardokter', [PasienviewController::class, 'daftardokter'])->name('daftardokter');
 Route::get('/chat/index', [ChatController ::class, 'index'])->name('chat');
 Route::post('/chat/send-message', [ChatController::class, 'sendMessage'])->name('chat.send-message');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/masuk', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
-    Route::post('/masuk', [LoginController::class, 'masuk'])->name('masuk');
-});
+Route::get('/masuk', [LoginController::class, 'showLoginForm'])->name('showLoginForm');
+Route::post('/masuk', [LoginController::class, 'masuk'])->name('masuk');
 
 Route::get('/registrasi', [RegistrasiController::class,'showRegistrationForm'])->name('registrasi');
 Route::post('/registrasi', [RegistrasiController::class, 'registrasi']);

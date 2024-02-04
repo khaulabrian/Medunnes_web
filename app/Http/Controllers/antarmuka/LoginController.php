@@ -16,10 +16,10 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('login'); // Tampilkan form login
+        return view('antarmuka.masuk'); // Tampilkan form login
     }
 
-    public function login(Request $request)
+    public function masuk(Request $request)
     {
         // Validasi input
         $request->validate([
@@ -32,12 +32,12 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)){
               // Jika autentikasi berhasil, redirect ke dashboard
-              return redirect()->route('dashboard');
+              return redirect()->route('dashboard2');
         };
 
 
         // Jika autentikasi gagal, kembalikan ke halaman login dengan pesan error
-        return redirect()->route('login')->with('error', 'Email atau password salah');
+        return redirect()->route('masuk')->with('error', 'Email atau password salah');
     }
 
     public function logout()
